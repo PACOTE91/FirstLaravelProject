@@ -29,12 +29,12 @@ Editar Categoría
 
 @section('nav')
 <i class="em em-books" aria-role="presentation" aria-label="BOOKS"></i> CATEGORIAS
-<a class="p-2 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Artículo</a>
 
-@section('link_inicio')
-
-<a class="p-4 bg-red-800 hover:bg-red-400" href="{{ url('/') }}"><i class="em em-house" aria-role="presentation" aria-label="HOUSE BUILDING"></i> Inicio</a>
+@section('link_crear')
+<a class="p-4 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Artículo</a>
 @endsection
+
+
 @endsection
 
 @section('main')

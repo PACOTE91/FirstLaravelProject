@@ -10,8 +10,6 @@ Crear Artículos
 
 @endsection
 
-
-
 @section('main')
 
     <div class="w-1/2 m-auto p-4 bg-gray-700 rounded">

@@ -7,8 +7,7 @@ Editar Categoría
 @section('nav')
 <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i> EDITAR CATEGORIAS {{$category->id}}
 @section('link_crear')
-
-<a class="p-2 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Artículo</a>
+<a class="p-4 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Artículo</a>
 @endsection
 @endsection
 
