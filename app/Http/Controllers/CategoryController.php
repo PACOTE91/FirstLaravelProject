@@ -85,7 +85,7 @@ class CategoryController extends Controller
         //
         // var_dump($request);
         $request->validate([
-            "nombre"=>['required','string',"unique:categories,nombre,".$category->nombre],
+            "nombre"=>['required','string',"unique:categories,nombre,".$category->id],
             "descripcion"=>['required','string','min:3']
         ]);
 

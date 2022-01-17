@@ -16,7 +16,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items=Item::orderby("nombre")->paginate(5);
+        $items = Item::orderby("nombre")->paginate(5);
         return view("items.index", compact('items'));
     }
 
@@ -26,11 +26,10 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        
-        $categories=Category::select('id','nombre')->get();
-        return view('items.create', compact("categories"));
+    {
 
+        $categories = Category::select('id', 'nombre')->get();
+        return view('items.create', compact("categories"));
     }
 
     /**
@@ -44,14 +43,15 @@ class ItemController extends Controller
         //
 
         $request->validate([
-            "nombre"=>['required', 'string', 'min:5'],
-            "stock"=>['required', 'string', 'min:5'],
-            "precio"=>['required', 'string', 'min:5'],
-            "nombre"=>['required', 'string', 'min:5'],
-
-
+            "nombre" => ['required', 'string', 'min:5'],
+            "stock" => ['required', 'numeric'],
+            "precio" => ['required', 'numeric'],
+            "category_id" => ['required', 'numeric']
 
         ]);
+
+        Item::create($request->all());
+        return redirect()->route('items.index')->with('mensaje', 'Artículo creada');
     }
 
     /**
@@ -74,8 +74,8 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         //
-        $categories=Category::orderby("nombre")->get();
-        return view('items.update', compact('item','categories'));
+        $categories = Category::orderby("nombre")->get();
+        return view('items.update', compact('item', 'categories'));
     }
 
     /**
@@ -87,19 +87,18 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        
+
         $request->validate([
-            "nombre"=>["required","string","unique:items,nombre,".$item->id],
-            "stock"=>["required","numeric"],
-            "precio"=>["required","numeric"],
-            "category_id"=>["required","numeric"]
+            "nombre" => ["required", "string", "unique:items,nombre," . $item->id],
+            "stock" => ["required", "numeric"],
+            "precio" => ["required", "numeric"],
+            "category_id" => ["required", "numeric"]
         ]);
 
 
         $item->update($request->all());
 
         return redirect()->route('items.index')->with('mensaje', "Item actualizado");
-
     }
 
     /**

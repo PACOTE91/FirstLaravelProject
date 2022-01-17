@@ -31,7 +31,7 @@ Editar Categoría
 <i class="em em-books" aria-role="presentation" aria-label="BOOKS"></i> CATEGORIAS
 
 @section('link_crear')
-<a class="p-4 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Artículo</a>
+<a class="p-4 bg-red-700 hover:bg-red-900" href="{{ route('categories.create') }}">Crear Categoría</a>
 @endsection
 
 
